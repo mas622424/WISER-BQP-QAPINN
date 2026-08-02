@@ -55,3 +55,8 @@ For the quantum models, the first classical hidden layer is replaced by a Variat
 * **Trainable Ansatz:** A 2-layer (`n_layers=2`) heavily entangled circuit. Each layer applies general parameterized rotations (`qml.Rot` utilizing phi, theta, omega weights) to every qubit, followed by a ring-topology of CNOT gates.
 * **Measurement:** Expectation values of the Pauli-Z observables for all qubits are extracted and passed to the subsequent classical layers.
 * **Classical Stack:** PyTorch Linear layers utilizing `Tanh` activations to maintain the twice-differentiable requirement for solving second-order PDEs.
+
+## Contributors
+* **[Name Here]** - *Role 1: Theory Lead* (Mathematical Derivations & PDE Formulation)
+* **Ajay Sankar Makkena** - *Role 2: Machine Learning & Quantum Implementation Lead* (Model Architecture, Training, & Data Generation)
+* **[Name Here]** - *Role 3: Explainable AI (XAI) Lead* (Visualizations, PDE Heatmaps, & Performance Comparisons)

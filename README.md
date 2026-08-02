@@ -59,4 +59,4 @@ For the quantum models, the first classical hidden layer is replaced by a Variat
 ## Contributors
 * **[Name Here]** - *Role 1: Theory Lead* (Mathematical Derivations & PDE Formulation)
 * **Ajay Sankar Makkena** - *Role 2: Machine Learning & Quantum Implementation Lead* (Model Architecture, Training, & Data Generation)
-* **[Name Here]** - *Role 3: Explainable AI (XAI) Lead* (Visualizations, PDE Heatmaps, & Performance Comparisons)
+* **Pascal Chabo Bya'ombe** - *Role 3: Explainable AI (XAI) Lead* (Visualizations, PDE Heatmaps, & Performance Comparisons) - https://github.com/scal01

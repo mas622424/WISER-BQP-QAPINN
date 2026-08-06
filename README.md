@@ -1,4 +1,4 @@
-# Quantum-Assisted Physics-Informed Neural Network (QAPINN)
+# Quantum-Assisted Physics-Informed Neural Network (QAPINN) for CFD
 **BQP WISER Quantum Challenge 2026**
 
 ## 🎯 The Challenge

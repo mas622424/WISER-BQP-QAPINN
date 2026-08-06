@@ -53,3 +53,8 @@ To ensure mathematical reproducibility, strict random seeds (`seed = 42`) are en
 * **Dennis Appiah Kubi (Role 1: Theory Lead):** Selected benchmark PDEs, formulated the mathematical derivations, derived the governing equations, and established the VQC mathematical justifications.(GitHub:[Mr-Kad7](https://github.com/Mr-Kad7))
 * **Ajay Sankar Makkena (Role 2: ML & Quantum Implementation Lead):** Designed the PyTorch & PennyLane architectures, engineered the automatic differentiation physics engine, executed model training, and generated all experimental data artifacts.(GitHub:[mas622424](https://github.com/mas622424))(mail: ajcodestacks@gmail.com)
 * **Pascal Chabo Bya'ombe (Role 3: Explainable AI & Analysis Lead):** Applied XAI techniques to evaluate layer activations, generated comparative performance heatmaps, interpreted model metrics, and compiled the final technical report. (GitHub: [@scal01](https://github.com/scal01))
+
+## 📚 References & Resources
+* **Physics-Informed Neural Networks (PINNs):** [Raissi, Perdikaris, and Karniadakis (2019)](https://doi.org/10.1016/j.jcp.2018.10.045). The foundational paper defining the PINN loss landscape and the source of the analytical continuous-time Burgers' equation dataset.
+* **PennyLane TorchLayer:** [Xanadu Documentation](https://docs.pennylane.ai/en/stable/code/api/pennylane.qnn.TorchLayer.html). The quantum machine learning framework used to embed the Variational Quantum Circuit (VQC) as a fully differentiable PyTorch layer.
+* **PyTorch Autograd for PDEs:** [PyTorch Documentation](https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html). Utilized to calculate the exact first-order temporal ($u_t$) and second-order spatial ($u_{xx}$) derivatives for the PDE residual loss.

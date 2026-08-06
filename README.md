@@ -52,4 +52,4 @@ To ensure mathematical reproducibility, strict random seeds (`seed = 42`) are en
 ## 👥 Team Members & Contributions
 * **[Role 1 Name] (Role 1: Theory Lead):** Selected benchmark PDEs, formulated the mathematical derivations, derived the governing equations, and established the VQC mathematical justifications.
 * **Ajay Sankar Makkena (Role 2: ML & Quantum Implementation Lead):** Designed the PyTorch & PennyLane architectures, engineered the automatic differentiation physics engine, executed model training, and generated all experimental data artifacts.
-* **Pascal Chabo Bya'ombe (Role 3: Explainable AI & Analysis Lead):** Applied XAI techniques to evaluate layer activations, generated comparative performance heatmaps, interpreted model metrics, and compiled the final technical report. (GitHub: [@scal01](https://github.com/scal01))
+* **Pascal Chabo Bya'ombe (Role 3: Explainable AI & Analysis Lead):** Applied XAI techniques to evaluate layer activations, generated comparative performance heatmaps, interpreted model metrics, and compiled the final technical report. scalchabo@gmail.com 

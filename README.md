@@ -1,4 +1,4 @@
-# Quantum-Assisted Physics-Informed Neural Network (QAPINN)
+# Quantum-Assisted Physics-Informed Neural Network (QAPINN) for CFD
 **BQP WISER Quantum Challenge 2026**
 
 ## 🎯 The Challenge
@@ -8,7 +8,7 @@ The objective of this project is to investigate the explainability and expressiv
 Rather than just aiming for speed, our methodology focuses on isolating the quantum layer's impact. We developed a pure Classical PINN (cPINN) as a baseline, and compared it against three hybrid variants: 3-qubit, 4-qubit, and 5-qubit QAPINNs. By controlling the expressivity of the quantum layer (via the number of qubits) and comparing the intermediate hidden-layer activations against the classical baseline, we mapped how the quantum entanglement alters the network's capacity to learn physical laws.
 
 ## ⚙️ Methods & Tools
-* **Quantum/Classical Frameworks:** PyTorch (for the classical neural network stack and `autograd` PDE calculus) and PennyLane (for simulating the VQC and integrating it as a PyTorch TorchLayer).
+* **Quantum/Classical Frameworks:** PyTorch (for the classical neural network stack and autograd PDE calculus) and PennyLane (for simulating the VQC and integrating it as a PyTorch TorchLayer).
 * **Environment:** Google Colab (T4 Tensor Core GPU).
 * **Data Selection:** Instead of external training data, the models generate internal collocation points dynamically. We benchmarked our final predictions against the standard analytical solution (`burgers_shock.mat` via Raissi et al.) mapped to a 256x100 spatial-temporal grid for zero-interpolation error analysis.
 
@@ -18,17 +18,17 @@ Rather than just aiming for speed, our methodology focuses on isolating the quan
 * **Neuron Diversity:** [Role 3 to insert brief 1-sentence finding about Layer 2/3 activation diversity here].
 
 ## 🔮 Limitations & Recommended Next Steps
-* **The Shockwave Convergence Limit:** Despite minimizing the training loss, the basic QAPINN variants struggled to converge on the true analytical solution for the Burgers' equation (e.g., 4-qubit Relative L2 Error ~ 1.20). This highlights a known limitation in standard PINN architectures when resolving sharp shock gradients. 
+* **The Shockwave Convergence Limit:** Despite minimizing the training loss, the basic QAPINN variants struggled to converge on the true analytical solution for the Burgers' equation (e.g., 4-qubit Relative L2 Error ~ 1.20). This highlights a known limitation in standard PINN architectures when resolving sharp shock gradients.
 * **Next Steps:** Future development should investigate adaptive collocation point sampling (focusing points around the shockwave), modifying the VQC ansatz to capture higher-frequency Fourier features, or testing the QAPINN on smoother PDEs (like the Heat Equation) to decouple the shockwave difficulty from the quantum layer's native expressivity.
 
 ## 📁 Repository Structure
-* `/notebooks`: Contains the Google Colab training notebooks for all model variants.
+* **/notebooks:** Contains the Google Colab training notebooks for all model variants.
   * `01_cPINN_Baseline.ipynb` - Classical PINN baseline.
   * `02_QAPINN_4_qubit.ipynb` - Hybrid model with a 4-qubit VQC layer.
   * `03_QAPINN_3_qubit.ipynb` - 3-qubit variant (reduced expressivity).
   * `04_QAPINN_5_qubit.ipynb` - 5-qubit variant (increased expressivity).
-* `/results`: Contains exported NumPy arrays (`.npy`, `.npz`) used for XAI analysis, including:
-  * `predictions_[model].npy`: Predicted fluid velocity $u(x,t)$.
+* **/results:** Contains exported NumPy arrays (`.npy`, `.npz`) used for XAI analysis, including:
+  * `predictions_[model].npy`: Predicted fluid velocity u(x,t).
   * `activations_[model].npz`: Captured hidden layer activations.
   * `loss_curve_[model].npy`: Epoch loss tracking.
   * `weights_[model].npz`: Flattened network weights.
@@ -42,10 +42,10 @@ To ensure mathematical reproducibility, strict random seeds (`seed = 42`) are en
 4. Select **Runtime > Run all**. The model will train for 1,000 epochs, dynamically pull the exact analytical data, and save the artifact files to the Colab system.
 
 ## 🧠 Neural Network Architecture Details
-* **Loss Function:** $\mathcal{L}_{Total} = \mathcal{L}_{PDE} + \mathcal{L}_{IC} + \mathcal{L}_{BC}$
+* **Loss Function:** L_Total = L_PDE + L_IC + L_BC
 * **Hybrid VQC Design (PennyLane):**
-  * **Data Encoding:** Inputs scaled to $[-\pi, \pi]$ via AngleEmbedding (Y-axis rotations).
-  * **Trainable Ansatz:** 2-layer heavily entangled circuit applying parameterized rotations (`qml.Rot` via $\phi, \theta, \omega$) followed by ring-topology CNOT gates.
+  * **Data Encoding:** Inputs scaled to [-π, π] via AngleEmbedding (Y-axis rotations).
+  * **Trainable Ansatz:** 2-layer heavily entangled circuit applying parameterized rotations (`qml.Rot` via phi, theta, omega angles) followed by ring-topology CNOT gates.
   * **Measurement:** Expectation values of Pauli-Z observables.
 * **Classical Stack (PyTorch):** Linear layers utilizing `Tanh` activations to maintain the twice-differentiable requirement for solving second-order PDEs.
 
@@ -53,3 +53,11 @@ To ensure mathematical reproducibility, strict random seeds (`seed = 42`) are en
 * **[Role 1 Name] (Role 1: Theory Lead):** Selected benchmark PDEs, formulated the mathematical derivations, derived the governing equations, and established the VQC mathematical justifications.
 * **Ajay Sankar Makkena (Role 2: ML & Quantum Implementation Lead):** Designed the PyTorch & PennyLane architectures, engineered the automatic differentiation physics engine, executed model training, and generated all experimental data artifacts.
 * **Pascal Chabo Bya'ombe (Role 3: Explainable AI & Analysis Lead):** Applied XAI techniques to evaluate layer activations, generated comparative performance heatmaps, interpreted model metrics, and compiled the final technical report. scalchabo@gmail.com 
+* **Dennis Appiah Kubi (Role 1: Theory Lead):** Selected benchmark PDEs, formulated the mathematical derivations, derived the governing equations, and established the VQC mathematical justifications.(GitHub:[Mr-Kad7](https://github.com/Mr-Kad7))
+* **Ajay Sankar Makkena (Role 2: ML & Quantum Implementation Lead):** Designed the PyTorch & PennyLane architectures, engineered the automatic differentiation physics engine, executed model training, and generated all experimental data artifacts.(GitHub:[mas622424](https://github.com/mas622424))(mail: ajcodestacks@gmail.com)
+* **Pascal Chabo Bya'ombe (Role 3: Explainable AI & Analysis Lead):** Applied XAI techniques to evaluate layer activations, generated comparative performance heatmaps, interpreted model metrics, and compiled the final technical report. (GitHub: [@scal01](https://github.com/scal01))
+
+## 📚 References & Resources
+* **Physics-Informed Neural Networks (PINNs):** [Raissi, Perdikaris, and Karniadakis (2019)](https://doi.org/10.1016/j.jcp.2018.10.045). The foundational paper defining the PINN loss landscape and the source of the analytical continuous-time Burgers' equation dataset.
+* **PennyLane TorchLayer:** [Xanadu Documentation](https://docs.pennylane.ai/en/stable/code/api/pennylane.qnn.TorchLayer.html). The quantum machine learning framework used to embed the Variational Quantum Circuit (VQC) as a fully differentiable PyTorch layer.
+* **PyTorch Autograd for PDEs:** [PyTorch Documentation](https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html). Utilized to calculate the exact first-order temporal ($u_t$) and second-order spatial ($u_{xx}$) derivatives for the PDE residual loss.
